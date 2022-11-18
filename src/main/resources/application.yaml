@@ -5,13 +5,13 @@ spring:
     name: hmdp
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/hmdp?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: 123
+    password: root
   redis:
-    host: 192.168.150.101
+    host: 127.0.0.1
     port: 6379
-    password: 123321
+#    password: 123321
     lettuce:
       pool:
         max-active: 10
@@ -20,6 +20,15 @@ spring:
         time-between-eviction-runs: 10s
   jackson:
     default-property-inclusion: non_null # JSON处理时忽略非空字段
+  mail:
+    host: smtp.qq.com #qq邮箱的服务器
+    username: 1913227478@qq.com #指定发送的邮箱账号
+    password: qlbfdmdpyavjceci #上一步拿到的授权码
+    port: 587 #端口号
+    smtp:
+      ssl:
+        enable: true
+    default-encoding: utf-8
 mybatis-plus:
   type-aliases-package: com.hmdp.entity # 别名扫描包
 logging:
