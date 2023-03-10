@@ -10,11 +10,11 @@ local stockKey = 'seckill:stock:' .. voucherId
 local orderKey = 'seckill:order:' .. voucherId
 -- 3.脚本业务
 -- 3.1判断库存是否充足
---[[if (tonumber(redis.call('get',stockKey))<=0) then
+if (tonumber(redis.call('get',stockKey))<=0) then
     return 1
-end]]
+end
 -- 3.2判断用户是否下单 SISMEMBER
-if (redis.call('SISMEMBER',stockKey,userId)==1) then
+if (redis.call('sismember',orderKey,userId)==1) then
 --  3.3存在，说明重复下单
     return 2
 end
